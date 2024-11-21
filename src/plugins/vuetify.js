@@ -20,17 +20,17 @@ const myCustomLightTheme = {
     'surface-light': '#EEEEEE',
     'surface-variant': '#424242',
     'on-surface-variant': '#EEEEEE',
-    primary: '#BF244E',
+    primary: '#024059',
     'primary-darken-1': '#1F5592',
-    secondary: '#4A96D9',
-    'secondary-darken-1': '#018786',
-    error: '#B00020',
-    info: '#2196F3',
-    success: '#7FBF50',
-    warning: '#FB8C00',
+    secondary: '#F77F00',
+    'secondary-darken-1': '#D9D9D9',
+    error: '#FF595E',
+    info: '#7CC2E6',
+    success: '#177E89',
+    warning: '#F2B705',
   },
   variables: {
-    'border-color': '#000000',
+    'border-color': '#D9D9D9',
     'border-opacity': 0.12,
     'high-emphasis-opacity': 0.87,
     'medium-emphasis-opacity': 0.60,
@@ -45,7 +45,7 @@ const myCustomLightTheme = {
     'theme-kbd': '#212529',
     'theme-on-kbd': '#FFFFFF',
     'theme-code': '#F5F5F5',
-    'theme-on-code': '#000000',
+    'theme-on-code': '#D9D9D9',
   }
 }
 
@@ -58,3 +58,22 @@ export default createVuetify({
     },
   },
 })
+
+
+
+// // Primary
+// #024059
+// //border
+// #d9d9d9
+// //Secondary
+// #f77f00
+
+
+// //warning
+// #F2B705
+
+// //error
+// #ff595e 
+
+// //info
+// #7CC2E6
