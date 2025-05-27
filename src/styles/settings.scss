@@ -4,7 +4,31 @@
  * Configures SASS variables and Vuetify overwrites
  */
 
-// https://vuetifyjs.com/features/sass-variables/`
+// https://vuetifyjs.com/features/sass-variables/
 // @use 'vuetify/settings' with (
 //   $color-pack: false
 // );
+
+.content-wrapper {
+  margin-top: 64px;         // Altura de la barra superior
+  margin-left: 256px;       // Ancho del drawer lateral
+  padding: 24px;
+  max-width: calc(100vw - 280px); // Asegura que no se desborde hacia la derecha
+  box-sizing: border-box;   // Incluye el padding dentro del ancho
+  overflow-x: hidden;       // Evita scroll horizontal innecesario
+}
+
+// https://vuetifyjs.com/en/styles/overlays/#drawer
+.drawer {
+  width: 256px;
+  max-width: 256px;
+  background-color: #f5f5f5;
+  color: #000;
+  box-shadow: none;
+  border-right: none;
+}
+.drawer .v-list-item {
+  padding: 16px;
+  font-size: 16px;
+  color: #000;
+}
