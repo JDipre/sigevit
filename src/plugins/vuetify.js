@@ -1,16 +1,9 @@
-/**
- * plugins/vuetify.js
- *
- * Framework documentation: https://vuetifyjs.com`
- */
-
 // Styles
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
-
-// Composables
 import { createVuetify } from 'vuetify'
 
+// 🎨 Definición del tema personalizado
 const myCustomLightTheme = {
   dark: false,
   colors: {
@@ -49,7 +42,7 @@ const myCustomLightTheme = {
   }
 }
 
-// https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
+// ✅ Export único
 export default createVuetify({
   theme: {
     defaultTheme: 'myCustomLightTheme',
@@ -58,6 +51,7 @@ export default createVuetify({
     },
   },
 })
+
 
 
 
