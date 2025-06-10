@@ -1,16 +1,15 @@
 const express = require('express');
-const cors = require('cors');
 const app = express();
-require('dotenv').config();
+const path = require('path');
 
-const casosRoutes = require('./routes/casos');
-
+// Habilitar CORS si es necesario
+const cors = require('cors');
 app.use(cors());
-app.use(express.json());
 
-app.use('/api/casos', casosRoutes);
+// Hacer pública la carpeta "recursos"
+app.use('/recursos', express.static(path.join(__dirname, 'recursos')));
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en puerto ${PORT}`);
+// Resto de tus rutas o lógica...
+app.listen(3001, () => {
+  console.log('Servidor backend en http://localhost:3001');
 });
