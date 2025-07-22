@@ -1,19 +1,31 @@
 const sql = require('mssql');
 
 const config = {
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  server: process.env.DB_SERVER.split('\\\\')[0], // JMDPDT01
-  database: process.env.DB_NAME,
+  user: 'sa',
+  password: 'Soporte12',
+  server: 'localhost',
+  port: 1433,
+  database: 'sigevit',
   options: {
     encrypt: true,
-    trustServerCertificate: true,
-    instanceName: 'SQLEXPRESS'
+    trustServerCertificate: true
   }
 };
 
+// Conexión global para reutilizar
+let pool;
 
-module.exports = {
-  sql,
-  config
+const connectToDb = async () => {
+  try {
+    if (!pool) {
+      pool = await sql.connect(config);
+      console.log('Conectado a la base de datos SQL Server');
+    }
+    return pool;
+  } catch (err) {
+    console.error('Error al conectar a la base de datos:', err);
+    throw err;
+  }
 };
+
+module.exports = connectToDb;

@@ -51,6 +51,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import axios from 'axios'
 
 const route = useRoute()
 const router = useRouter()
@@ -68,23 +69,19 @@ const caso = ref({
   responsable: ''
 })
 
-onMounted(() => {
+onMounted(async() => {
+  console.log('Cargando caso con ID:', id);
   // Simular carga del caso desde la base de datos
-  caso.value = {
-    nombre: 'Ana',
-    apellido: 'Rodríguez',
-    sexo: 'Femenino',
-    edad: 23,
-    nacionalidad: 'Dominicana',
-    tipo: 'Laboral',
-    estado: 'En proceso',
-    institucion: 'CONANI',
-    responsable: 'Lic. Pérez'
-  }
+
+  const response =  await axios.get(`http://localhost:3001/api/casos/${id}`);
+  caso.value = response.data;// await axios.get(`http://localhost:3001/api/casos/${id}`);
+  console.log('Caso cargado:', caso.value);
 })
 
-const guardarCambios = () => {
-  console.log('✅ Cambios guardados:', caso.value)
+const guardarCambios =async () => {
+  const response= await axios.put(`http://localhost:3001/api/casos/${id}`, caso.value);
+
+console.log('Caso actualizado:', response.data);
   router.push(`/casos/${id}`)
 }
 

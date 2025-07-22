@@ -37,16 +37,32 @@
               <v-textarea v-model="nuevoCaso.resumen" label="Breve reseña del caso" rows="3" />
             </v-col>
           </v-row>
-          <v-btn color="primary" type="submit">Guardar Caso</v-btn>
+
+          <v-btn
+            color="primary"
+            type="submit"
+            :loading="cargando"
+            :disabled="cargando"
+          >
+            Guardar Caso
+          </v-btn>
         </v-form>
       </v-card-text>
     </v-card>
+
+    <!-- Snackbar -->
+    <v-snackbar v-model="snackbar.visible" :color="snackbar.color" timeout="4000">
+      {{ snackbar.message }}
+    </v-snackbar>
   </v-container>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const nuevoCaso = ref({
   nombre: '',
@@ -60,13 +76,53 @@ const nuevoCaso = ref({
   resumen: ''
 })
 
+const cargando = ref(false)
+
+const snackbar = ref({
+  visible: false,
+  message: '',
+  color: 'success'
+})
+
+const mostrarSnackbar = (mensaje, color = 'success') => {
+  snackbar.value.message = mensaje
+  snackbar.value.color = color
+  snackbar.value.visible = true
+}
+
 const guardarCaso = async () => {
+  cargando.value = true
   try {
-    const response = await axios.post('http://localhost:3001/api/casos', nuevoCaso.value)
-    alert('Caso guardado correctamente.')
+    await axios.post('http://localhost:3001/api/casos', nuevoCaso.value)
+    mostrarSnackbar('✅ Caso guardado correctamente.')
+    resetFormulario()
+    // Redirigir luego de 2 segundos
+    setTimeout(() => {
+      router.push('/casos')
+    }, 2000)
   } catch (error) {
-    alert('Error al guardar el caso.')
     console.error(error)
+    mostrarSnackbar('❌ Error al guardar el caso.', 'error')
+  } finally {
+    cargando.value = false
+  }
+}
+
+const resetFormulario = () => {
+  nuevoCaso.value = {
+    nombre: '',
+    apellido: '',
+    pseudonimo: '',
+    sexo: '',
+    nacionalidad: '',
+    provincia: '',
+    fechaRescate: '',
+    lugarRescate: '',
+    resumen: ''
   }
 }
 </script>
+
+<style scoped>
+/* Estilos opcionales */
+</style>
