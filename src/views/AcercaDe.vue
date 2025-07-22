@@ -7,10 +7,13 @@
       </v-card-title>
       <v-card-text>
         <p>
-          <strong>SIGEVIT</strong> es un Sistema de Gestión de Casos para Víctimas de Trata de Personas, creado con el propósito de facilitar la documentación, seguimiento, coordinación interinstitucional y protección de personas afectadas por esta problemática.
+          <strong>SIGEVIT</strong> es un Sistema de Gestión de Casos para Víctimas de Trata de Personas, creado con el
+          propósito de facilitar la documentación, seguimiento, coordinación interinstitucional y protección de personas
+          afectadas por esta problemática.
         </p>
         <p>
-          Este sistema permite registrar información detallada de cada caso, realizar seguimientos continuos, generar reportes estratégicos y acceder a recursos clave para la intervención.
+          Este sistema permite registrar información detallada de cada caso, realizar seguimientos continuos, generar
+          reportes estratégicos y acceder a recursos clave para la intervención.
         </p>
 
         <v-divider class="my-4" />
@@ -25,6 +28,14 @@
         </ul>
       </v-card-text>
     </v-card>
+
+    <v-card class="mb-6">
+      <v-card-title class="font-weight-bold">Actualizaciones del Sistema</v-card-title>
+      <v-card-text>
+        <p><strong>Versión:</strong> 2.51 <span class="grey--text">(Sin programar)</span></p>
+        <p><strong>Última actualización:</strong> 12/03/2024</p>
+      </v-card-text>
+    </v-card>
   </v-container>
 </template>
 
@@ -36,6 +47,7 @@
 ul {
   padding-left: 1.2rem;
 }
+
 li {
   margin-bottom: 8px;
 }

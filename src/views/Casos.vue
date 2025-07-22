@@ -1,27 +1,12 @@
 <template>
   <v-card flat class="table-card elevation-1">
-    <v-data-table
-      :headers="headers"
-      :items="casosFiltrados"
-      :loading="cargando"
-      loading-text="Cargando casos..."
-      dense
-      class="casos-table"
-      no-data-text="No se han registrado casos"
-      :items-per-page="10"
-      disable-sort
-      hide-default-footer
-    >
+    <v-data-table :headers="headers" :items="casosFiltrados" :loading="cargando" loading-text="Cargando casos..." dense
+      class="casos-table" no-data-text="No se han registrado casos" :items-per-page="10" disable-sort
+      hide-default-footer>
       <template #top>
         <v-toolbar flat dense class="table-toolbar">
-          <v-text-field
-            v-model="filtro"
-            dense
-            clearable
-            hide-details
-            placeholder="Buscar caso..."
-            append-icon="mdi-magnify"
-          ></v-text-field>
+          <v-text-field v-model="filtro" dense clearable hide-details placeholder="Buscar caso..."
+            append-icon="mdi-magnify"></v-text-field>
         </v-toolbar>
       </template>
 
@@ -40,21 +25,11 @@
       <template #footer>
         <v-row justify="end" class="px-4">
           <v-col cols="auto">
-            <v-pagination
-              v-model="pagina"
-              :length="pageCount"
-              total-visible="7"
-              size="small"
-            ></v-pagination>
+            <v-pagination v-model="pagina" :length="pageCount" total-visible="7" size="small"></v-pagination>
           </v-col>
           <v-col cols="auto">
-            <v-select
-              v-model="itemsPorPagina"
-              :items="[5, 10, 20, 50]"
-              dense
-              hide-details
-              style="width:70px"
-            ></v-select>
+            <v-select v-model="itemsPorPagina" :items="[5, 10, 20, 50]" dense hide-details
+              style="width:70px"></v-select>
           </v-col>
         </v-row>
       </template>
@@ -79,6 +54,133 @@ const obtenerCasos = async () => {
   try {
     const { data } = await axios.get('http://localhost:3001/api/casos')
     casos.value = data.map((c, i) => ({ ...c, numeroCaso: i + 1 }))
+    // casos.value = [{
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }, {
+    //   numeroCaso: "fa",
+    //   nombre: "fda",
+    //   apellido: "fds",
+    //   sexo: "fsd",
+    //   provincia: "fds",
+    //   acciones: "fs",
+    // }]
   } finally {
     cargando.value = false
   }

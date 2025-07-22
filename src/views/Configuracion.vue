@@ -13,7 +13,8 @@
       <v-card-text>
         <v-row class="mb-4" dense>
           <v-col cols="12" sm="6">
-            <v-text-field v-model="search" label="Buscar por nombre, correo o rol" append-inner-icon="mdi-magnify" dense outlined />
+            <v-text-field v-model="search" label="Buscar por nombre, correo o rol" append-inner-icon="mdi-magnify" dense
+              outlined />
           </v-col>
           <v-col cols="6" sm="2">
             <v-select :items="['Activa', 'Inactiva']" label="Estado" dense outlined />
@@ -26,18 +27,10 @@
           </v-col>
         </v-row>
 
-        <v-data-table
-          :headers="userHeaders"
-          :items="usuarios"
-          class="elevation-1"
-          item-value="nombre"
-        >
+        <v-data-table :headers="userHeaders" :items="usuarios" class="elevation-1" item-value="nombre">
           <template #item.estado="{ item }">
-            <v-chip
-              :color="item.estado === 'Activa' ? 'green lighten-2' : 'orange lighten-2'"
-              :text-color="item.estado === 'Activa' ? 'green--text' : 'orange--text'"
-              small
-            >
+            <v-chip :color="item.estado === 'Activa' ? 'green lighten-2' : 'orange lighten-2'"
+              :text-color="item.estado === 'Activa' ? 'green--text' : 'orange--text'" small>
               {{ item.estado }}
             </v-chip>
           </template>
@@ -58,11 +51,15 @@
         <v-card-text>
           <v-form>
             <v-text-field label="Nombre completo" v-model="nuevoUsuario.nombre" outlined dense required />
-            <v-text-field label="Correo electrónico" v-model="nuevoUsuario.correo" type="email" outlined dense required />
-            <v-text-field label="Contraseña" v-model="nuevoUsuario.contrasena" type="password" outlined dense required />
-            <v-select label="Rol" :items="roles.map(r => r.nombre)" v-model="nuevoUsuario.rol" outlined dense required />
+            <v-text-field label="Correo electrónico" v-model="nuevoUsuario.correo" type="email" outlined dense
+              required />
+            <v-text-field label="Contraseña" v-model="nuevoUsuario.contrasena" type="password" outlined dense
+              required />
+            <v-select label="Rol" :items="roles.map(r => r.nombre)" v-model="nuevoUsuario.rol" outlined dense
+              required />
             <v-select label="Unidad asignada" :items="unidades" v-model="nuevoUsuario.unidad" outlined dense required />
-            <v-select label="Estado" :items="['Activa', 'Inactiva']" v-model="nuevoUsuario.estado" outlined dense required />
+            <v-select label="Estado" :items="['Activa', 'Inactiva']" v-model="nuevoUsuario.estado" outlined dense
+              required />
           </v-form>
         </v-card-text>
         <v-card-actions class="justify-end">
@@ -79,13 +76,7 @@
       </v-col>
 
       <v-col cols="12" md="6">
-        <v-card class="mb-6">
-          <v-card-title class="font-weight-bold">Actualizaciones del Sistema</v-card-title>
-          <v-card-text>
-            <p><strong>Versión:</strong> 2.51 <span class="grey--text">(Sin programar)</span></p>
-            <p><strong>Última actualización:</strong> 12/03/2024</p>
-          </v-card-text>
-        </v-card>
+
 
         <v-card>
           <v-card-title class="font-weight-bold">Historial de Actividades</v-card-title>
@@ -101,7 +92,8 @@
       <v-card>
         <v-card-title class="font-weight-bold">Historial de Actividades</v-card-title>
         <v-card-text>
-          <v-text-field v-model="filtroHistorial" label="Buscar por nombre o ID" append-inner-icon="mdi-magnify" outlined dense class="mb-4" />
+          <v-text-field v-model="filtroHistorial" label="Buscar por nombre o ID" append-inner-icon="mdi-magnify"
+            outlined dense class="mb-4" />
           <v-data-table :headers="headersHistorial" :items="actividadesFiltradas" item-value="id" class="elevation-1">
             <template #item.acciones="{ item }">
               <v-btn text color="primary" @click="verDetalleActividad(item)">Ver Detalle</v-btn>
