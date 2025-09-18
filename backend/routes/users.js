@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
 
         const result = await pool.request()
             .input('Email', sql.VarChar(100), correo)
-            .query('SELECT * FROM users WHERE correo = @correo');
+            .query('SELECT * FROM users WHERE Email = @Email');
 
         if (result.recordset.length === 0) {
             return res.status(401).send('Usuario o contraseña incorrectos');
