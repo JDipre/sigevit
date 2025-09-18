@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const connectToDb = require('./db');
 const casosRouter = require('./routes/casos');
+const usersRouter = require('./routes/users');
 
 const app = express();
 const PORT = 3001;
@@ -31,6 +32,7 @@ app.get('/api/test-db', async (req, res) => {
 
 // Conecta el router de casos
 app.use('/api/casos', casosRouter);
+app.use('/api/users', usersRouter);
 
 // Servir carpeta de recursos
 const carpetaRecursos = path.join('C:/Repositorios/sigevit/Formularios y Recursos');
